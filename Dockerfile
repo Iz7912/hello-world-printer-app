@@ -1,14 +1,14 @@
-From python:2.7
-workdir /tmp
+FROM python:2.7
 
-add requirements.txt /tmp/requirements.txt
-run pip install -r /tmp/requirements.txt
+WORKDIR /tmp
+ADD requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
-run mkdir -p /usr/src/hello-world-printer/
-add hello_world/ /usr/hello-world-printer/hello_world/
 
-add main.py /usr/src/hello-world-printer/
-run ls /usr/src/hello-world-printer
+RUN mkdir -p /usr/src/hello_world_printer/
+ADD hello_world/ /usr/src/hello_world_printer/hello_world/
 
-CMD PYTHONPATH=$PYTHONPATH:/usr/src/hello-world-printer \
-  Flask_app=hello_world flask run --host=0.0.0.0
+ADD main.py /usr/src/hello_world_printer/
+RUN ls /usr/src/hello_world_printer
+
+CMD PYTHONPATH=$PYTHONPATH:/usr/src/hello_world_printer FLASK_APP=hello_world flask run --host=0.0.0.0
