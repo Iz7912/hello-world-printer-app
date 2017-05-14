@@ -12,5 +12,5 @@ after_success:
   - PASSWORD=$DOCKER_PASSWORD make docker_push
 deploy:
   provider: heroku
-  app: Iza1
+  app: iza1
   api_key: ${HEROKU_API_KEY}
